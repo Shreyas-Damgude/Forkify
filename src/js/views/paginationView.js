@@ -19,25 +19,22 @@ class PaginationView extends View {
     );
 
     // First page, there are other pages
-    if (currPage === 1 && numPages > 1) {
+    if (currPage === 1 && numPages > 1)
       return this._generateMarkupButton('next', currPage);
-    }
+
+    // First page, there are no other pages
+    if (numPages === 1) return '';
 
     // Last Page
-    if (currPage === numPages) {
+    if (currPage === numPages)
       return this._generateMarkupButton('prev', currPage);
-    }
 
     // Other page
-    if (currPage < numPages && currPage > 1) {
+    if (currPage < numPages && currPage > 1)
       return `${this._generateMarkupButton(
         'prev',
         currPage
       )}${this._generateMarkupButton('next', currPage)}`;
-    }
-
-    // First page, there are no other pages
-    return `${this._generateMarkupButton('prev', currPage)}`;
   }
 
   _generateMarkupButton(direction, page) {
