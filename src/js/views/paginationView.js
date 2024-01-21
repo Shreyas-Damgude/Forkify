@@ -38,16 +38,23 @@ class PaginationView extends View {
   }
 
   _generateMarkupButton(direction, page) {
-    return `<button data-goto="${
-      direction === 'prev' ? page - 1 : page + 1
-    }" class="btn--inline pagination__btn--${direction}">
+    return direction === 'prev'
+      ? `<button data-goto="${
+          page - 1
+        }" class="btn--inline pagination__btn--${direction}">
                 <svg class="search__icon">
-                    <use href="${icons}#icon-arrow-${
-      direction === 'prev' ? 'left' : 'right'
-    }"></use>
+                    <use href="${icons}#icon-arrow-left"></use>
                 </svg>
-                <span>Page ${direction === 'prev' ? page - 1 : page + 1}</span>
-            </button>`;
+                <span>Page ${page - 1}</span>
+            </button>`
+      : `<button data-goto="${
+          page + 1
+        }" class="btn--inline pagination__btn--${direction}">
+            <span>Page ${page + 1}</span>
+            <svg class="search__icon">
+                <use href="${icons}#icon-arrow-right"></use>
+            </svg>
+        </button>`;
   }
 }
 

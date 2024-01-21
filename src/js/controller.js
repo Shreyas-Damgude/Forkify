@@ -4,6 +4,7 @@ import addRecipeView from './views/addRecipeView.js';
 import resultsView from './views/resultsView.js';
 import recipeView from './views/recipeView.js';
 import searchView from './views/searchView.js';
+import reloadView from './views/reloadView.js';
 import 'regenerator-runtime/runtime';
 import * as model from './model.js';
 import 'core-js/stable';
@@ -103,12 +104,13 @@ async function controlAddRecipe(newRecipe) {
 }
 
 function init() {
-  bookmarksView.addHandlerRender(controlBookmarks);
-  recipeView.addHandlerRender(controlRecipe);
   recipeView.addHandlerUpdateServings(controlServings);
   recipeView.addHandlerAddBookmark(controlAddBookmark);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+  bookmarksView.addHandlerRender(controlBookmarks);
   addRecipeView.addHandlerUpload(controlAddRecipe);
+  recipeView.addHandlerRender(controlRecipe);
+  reloadView.addHandlerClick();
 }
 init();
